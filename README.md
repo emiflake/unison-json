@@ -19,3 +19,7 @@ Look at [TUTORIAL.md](https://github.com/emiflake/unison-json/blob/master/TUTORI
 
 Well, I have yet to spot any huge bugs. The performance is quite poor, but it is able to parse small-ish structure pretty okay. Useful in combination with a HTTP client maybe.
 The error messages are quite pleasant for Decode errors, not so much for Parse errors.
+
+## Contributing
+
+Please follow the guidelines from [unisonweb/base](https://github.com/unisonweb/base/blob/master/CONTRIBUTING.md) for contributing.
