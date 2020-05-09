@@ -1,6 +1,6 @@
 So you want to decode JSON from the outside world huh, that's pretty scary!
 But by using some simple patterns, it doesn't have to be.
-In this short tutorial, we'll cover how to decode a simple API response that lists a bunch of users with their friends, and we'll go over how to model it.
+In this short tutorial, we'll cover how to decode a simple API response that lists a bunch of users with their hobbies, and we'll go over how to model it.
 
 ## Let's start with taking a look at the entire endpoint that we will model.
 
@@ -14,9 +14,9 @@ In this short tutorial, we'll cover how to decode a simple API response that lis
         "likes": [ "cooking", "managing" ]
       },
       {
-      "id": 1,
-      "name": "Alice",
-      "likes": [ "cooking", "programming" ]
+        "id": 1,
+        "name": "Alice",
+        "likes": [ "cooking", "programming" ]
       }
   ]
 }
@@ -66,25 +66,22 @@ decodeUser =
     <*> (Decode.field "id" Decode.int)
     <*> (Decode.field "name" Decode.string)
 ```
-
 Generally, the pattern is always more or less the same.
 
-First, we have the type we want to create passed into @Decode.succeed
+First, we have the type we want to create passed into `Decode.succeed`
 
 ```hs
 Decode.succeed YourType
 ```
 
-
 Then, we have each of the fields you want to feed into the type.
-
 
 ```hs
     <*> (Decode.field "myField" myFieldDecoder)
     <*> (Decode.field "myField2" myOtherFieldDecoder)
 ```
 
-In our case, we could use @Decode.int and @Decode.string, because our fields contained
+In our case, we could use `Decode.int` and `Decode.string`, because our fields contained
 those primitive types. But if you have nesting, you can put your own decoders in there!
 
 ## So, we decoded the ID and the name, but what about the likes?
@@ -116,7 +113,7 @@ type User = {
 }
 ```
 
-Okay, but how can we convert from a string into a @TUTORIAL.Hobby?
+Okay, but how can we convert from a string into a `TUTORIAL.Hobby`?
 
 Well, we have three functions that together can be used to create this relation:
 
@@ -143,8 +140,7 @@ decodeUser =
   Decode.succeed User
     <*> (Decode.field "id" Decode.int)
     <*> (Decode.field "name" Decode.string)
-    <*> (Decode.field "likes" (@ecode.array decodeHobby))
+    <*> (Decode.field "likes" (Decode.array decodeHobby))
 ```
 
-
-Look in the TUTORIAL namespace for supporting code.
+Look in the `TUTORIAL` namespace for supporting code and `fullExample`.
