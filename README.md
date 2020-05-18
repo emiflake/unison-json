@@ -1,24 +1,21 @@
 # unison-json
 
-An implementation of JSON decoders inspired by elm/json
+JSON decoding and encoding in Unison!
 
 ## Usage
 
-Pull the latest release using
+Pull the latest release (v1) using
 
 ```
-.> pull https://github.com/emiflake/unison-json.git:.releases._v0 external.json.v0
+.> pull https://github.com/emiflake/unison-json.git:.releases._v1 external.json.v1
 ```
 
-This library provides `Decode a` and ways to parse JSON values into Unison values.
+This library provides `Decode a` and ways to parse JSON values into Unison values. As well as functions to convert Unison values into JSON values.
 
 Look at [TUTORIAL.md](https://github.com/emiflake/unison-json/blob/master/TUTORIAL.md) for an example of how to use it.
 
+Encoding is done with the helper functions in the `Json.Value` namespace.
 
-## How stable is it right now?
-
-Well, I have yet to spot any huge bugs. The performance is quite poor, but it is able to parse small-ish structure pretty okay. Useful in combination with a HTTP client maybe.
-The error messages are quite pleasant for Decode errors, not so much for Parse errors.
 
 ## Contributing
 
